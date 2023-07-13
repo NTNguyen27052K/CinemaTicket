@@ -3,14 +3,14 @@ import {
   DELETETOLISTSELECTEDTICKET,
 } from "../Type/bookingTicketType";
 
-export let addSeatAction = (item) => {
+export const addSeatAction = (item) => {
   return {
     type: ADDTOLISTTICKET,
     payload: item,
   };
 };
 
-export let deleteSeatAction = (item) => {
+export const deleteSeatAction = (item) => {
   return {
     type: DELETETOLISTSELECTEDTICKET,
     payload: item,
