@@ -1,441 +1,136 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 
-export default class Body extends Component {
+import RowSeat from "./RowSeat";
+import { deleteSeatAction } from "../Redux/Action/bookingTicketAction";
+
+class Body extends Component {
+  renderHangGhe = (listSeat) => {
+    return listSeat.map((item, index) => {
+      // console.log(item);
+      return (
+        <Fragment key={index}>
+          <RowSeat rowSeat={item} soHangGhe={index} />
+        </Fragment>
+      );
+    });
+  };
+
+  renderListSelectedTicket = (listSelectedTicket) => {
+    return listSelectedTicket.map((item, index) => {
+      return (
+        <tr key={index}>
+          <td>{item.soGhe}</td>
+          <td>{item.gia}</td>
+          <td className="text-center">
+            <button
+              className="text-white"
+              style={{
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+              }}
+              onClick={() => {
+                // this.props.deleteToListSelectedTicket(item);
+                this.props.dispatch(deleteSeatAction(item));
+              }}
+            >
+              <i class="fa-solid fa-x"></i>
+            </button>
+          </td>
+        </tr>
+      );
+    });
+  };
+
   render() {
+    // console.log(this.props.ticket);
     return (
-      <table>
-        <tbody>
-          {/*  */}
-          <tr>
-            <td></td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td className="column"></td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-          </tr>
-          {/* A1*/}
-          <tr>
-            <td>A</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* B1 */}
-          <tr>
-            <td>B</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* C1 */}
-          <tr>
-            <td>C</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* D1 */}
-          <tr>
-            <td>D</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* E1 */}
-          <tr>
-            <td>E</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* SPACE */}
-          <tr className="rowSpacing"></tr>
-          {/* F */}
-          <tr>
-            <td>F</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* G */}
-          <tr>
-            <td>G</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* H */}
-          <tr>
-            <td>H</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* I */}
-          <tr>
-            <td>I</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-          {/* J */}
-          <tr>
-            <td>J</td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td></td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="container row">
+        <div className="col-8">
+          <table className="text-center">
+            {this.renderHangGhe(this.props.ticket)}
+          </table>
+        </div>
+        <div className="col-4">
+          <h2 className="text-white">Danh sách vé đặt</h2>
+          <div className="seatInfo">
+            <table>
+              <tr>
+                <th>
+                  <button className="gheDuocChon me-3"></button>
+                </th>
+                <th style={{ fontSize: "30px", color: "white" }}>Ghế đã đặt</th>
+              </tr>
+              <tr>
+                <th>
+                  <button className="ghe"></button>
+                </th>
+                <th style={{ fontSize: "30px", color: "white" }}>
+                  Ghế chưa đặt
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <button className="gheDangChon"></button>
+                </th>
+                <th style={{ fontSize: "30px", color: "white" }}>
+                  Ghế đang đặt
+                </th>
+              </tr>
+            </table>
+          </div>
+          <div className="listTicket">
+            <table
+              style={{
+                width: "100%",
+                color: "white",
+                border: " 1px solid white",
+                borderCollapse: "collapse",
+              }}
+            >
+              <tr>
+                <th>Số ghế</th>
+                <th>Giá</th>
+                <th className="text-center">Hủy</th>
+              </tr>
+              <tbody>
+                {this.renderListSelectedTicket(this.props.listSeat)}
+              </tbody>
+              <tr>
+                <td>Tổng tiền</td>
+                <td>
+                  {this.props.listSeat.reduce((totalMoney, item, index) => {
+                    return (totalMoney += item.gia);
+                  }, 0)}
+                </td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    ticket: state.ticket.arrListSeat,
+    listSeat: state.ticket.arrSelectedSeatList,
+  };
+};
+
+// const mapDispatToProps = (dispatch) => {
+//   return {
+//     deleteToListSelectedTicket: (item) => {
+//       const action = {
+//         type: "DELETETOLISTSELECTEDTICKET",
+//         payload: item,
+//       };
+//       dispatch(action);
+//     },
+//   };
+// };
+const Reduxcomponent = connect(mapStateToProps)(Body);
+
+export default Reduxcomponent;
