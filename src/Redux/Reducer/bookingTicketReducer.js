@@ -19,7 +19,7 @@ export const bookingTicketReducer = (state = initialState, action) => {
       const newArrSelectedSeatList = [...state.arrSelectedSeatList];
 
       if (index === -1) {
-        newArrSelectedSeatList.push({ ...action.payload, daDat: "true" });
+        newArrSelectedSeatList.push({ ...action.payload });
       }
 
       return { ...state, arrSelectedSeatList: newArrSelectedSeatList };
